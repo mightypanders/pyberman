@@ -2,7 +2,6 @@ from datetime import datetime
 
 import pygame
 
-import colors
 from sounds.audiohandler import ingamesounds
 
 wall_width = 10
@@ -81,7 +80,6 @@ class Bomb(pygame.sprite.Sprite):
 		self.timeplaced = datetime.now()
 
 	def update(self):
-
 		delta = (datetime.now() - self.timeplaced).seconds
 		if delta > 3:
 			self.explode()
@@ -90,8 +88,6 @@ class Bomb(pygame.sprite.Sprite):
 		sounds.bomb_explode.play()
 		self.kill()
 		print(self.player.bombs_placed)
-
-	# self.player.bomb_exploded()
 
 
 class Wall(pygame.sprite.Sprite):
