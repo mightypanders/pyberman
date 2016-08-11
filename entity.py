@@ -2,10 +2,10 @@ from datetime import datetime
 
 import pygame
 
-from sounds.audiohandler import ingamesounds
+from sounds.audiohandler import IngameSounds
 
 wall_width = 10
-sounds = ingamesounds()
+sounds = IngameSounds()
 
 
 class Player(pygame.sprite.Sprite):

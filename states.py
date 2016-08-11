@@ -17,7 +17,7 @@ class Menu(States):
 		States.__init__(self)
 		self.next = "game"
 
-		self.bg_color = BACKGROUND
+		self.bg_color = MENUBACKGROUND
 
 		self.font = MENU_FONT
 		self.font_color = RED
@@ -80,10 +80,14 @@ class Game(States):
 		self.player.walls = self.wall_list
 
 	def cleanup(self):
-		print("do some game cleanup")
+		self.all_sprites = None
+		self.wall_list = None
+		self.walls = None
+		self.blocks = None
+		self.player = None
 
 	def startup(self):
-		print("startup game")
+		self.__init__()
 
 	def get_event(self, event):
 		if event.type == pygame.QUIT:
@@ -117,7 +121,7 @@ class Game(States):
 		self.all_sprites.update()
 
 	def draw(self, screen):
-		screen.fill(BACKGROUND)
+		screen.fill(GAMEBACKGROUND)
 		self.all_sprites.draw(SCREEN)
 
 

@@ -56,6 +56,6 @@ while not DONE:
 
 	all_sprites.update()
 
-	SCREEN.fill(BACKGROUND)
+	SCREEN.fill(GAMEBACKGROUND)
 	all_sprites.draw(SCREEN)
 	pygame.display.flip()
