@@ -2,6 +2,7 @@ import setup
 from constants import *
 from entity import Player
 from graphics.colors import *
+from input import *
 
 
 class States(object):
