@@ -2,7 +2,8 @@ import setup
 from constants import *
 from entity import Player
 from graphics.colors import *
-from input import *
+
+pygame.init()
 
 
 class States(object):
@@ -11,6 +12,7 @@ class States(object):
 		self.next = None
 		self.quit = False
 		self.previous = None
+		self.screen = SCREEN
 
 
 class Menu(States):
@@ -23,8 +25,7 @@ class Menu(States):
 		self.font = MENU_FONT
 		self.font_color = RED
 
-		self.labels = []
-		self.menu_items = ("Start", "Quit")
+		self.menu_items = ("Start", "Options", "Quit")
 
 	def cleanup(self):
 		self.labels = None
@@ -32,25 +33,38 @@ class Menu(States):
 
 	def startup(self):
 		self.labels = []
-		for item in self.menu_items:
+		self.height_text = 0
+
+		for index, item in enumerate(self.menu_items):
+
 			label = self.font.render(item, 1, self.font_color)
-			self.labels.append(label)
-		print("init menu stuff")
+			lbl_w, lbl_h = label.get_rect().width, label.get_rect().height
+
+			self.height_text += lbl_h
+			pos_x = (SCREEN_WIDTH / 2) - (lbl_w / 2)
+			pos_y = (SCREEN_HEIGHT / 2) - (self.height_text / 2) + (
+				index * lbl_h)
+			self.labels.append([item, label, (lbl_w, lbl_h), (pos_x, pos_y)])
 
 	def get_event(self, event):
 		if event.type == pygame.QUIT:
-			self.done = True
+			self.done, self.quit = True, True
 		if event.type == pygame.KEYDOWN:
 			if event.key == pygame.K_SPACE:
 				self.done = True
+			elif event.key == pygame.K_p:
+				print(self.screen.get_rect().width, " ", self.screen.get_rect(
+				).height)
+			elif event.key == pygame.K_ESCAPE:
+				self.done, self.quit = True, True
 
 	def update(self, screen, dt):
 		self.draw(screen)
 
 	def draw(self, screen):
 		screen.fill(self.bg_color)
-		for index, label in enumerate(self.labels):
-			screen.blit(label, ((index + 1) * 100, (index + 1) * 100))
+		for item, label, (w, h), (x, y) in self.labels:
+			self.screen.blit(label, (x,y))
 
 
 class Loading(States):
@@ -175,5 +189,6 @@ state_dict = {
 	'menu': Menu(),
 	'game': Game()
 }
-app.setup_states(state_dict, 'menu')
+app.setup_states(state_dict, 'game')
+
 app.main_game_loop()

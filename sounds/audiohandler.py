@@ -1,9 +1,9 @@
 import pygame
+import os
 
 pygame.mixer.pre_init(22050, -16, 2, 512)
 pygame.mixer.init()
 pygame.init()
-
 
 class IngameSounds:
 	def __init__(self):

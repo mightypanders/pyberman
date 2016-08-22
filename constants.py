@@ -1,8 +1,9 @@
 import pygame
+import colors
 
 pygame.init()
-SCREEN_WIDTH = 1024
-SCREEN_HEIGHT = 768
+SCREEN_WIDTH = 640
+SCREEN_HEIGHT = 480
 SCREEN_SIZE = (SCREEN_WIDTH, SCREEN_HEIGHT)
 
 FLAGS = pygame.DOUBLEBUF | pygame.HWSURFACE | pygame.HWACCEL
@@ -13,3 +14,4 @@ CLOCK = pygame.time.Clock()
 
 
 MENU_FONT = pygame.font.SysFont("Droid Sans Mono", 25)
+MENU_FONT_COLOR = colors.RED

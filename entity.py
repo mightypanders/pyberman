@@ -4,7 +4,6 @@ import pygame
 
 from sounds.audiohandler import IngameSounds
 
-wall_width = 10
 sounds = IngameSounds()
 
 
@@ -87,6 +86,7 @@ class Bomb(pygame.sprite.Sprite):
 	def explode(self):
 		sounds.bomb_explode.play()
 		self.kill()
+		print ("boom")
 		print(self.player.bombs_placed)
 
 
