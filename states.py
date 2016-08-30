@@ -40,7 +40,7 @@ class Menu(States):
 			label = self.font.render(item, 1, self.font_color)
 			lbl_w, lbl_h = label.get_rect().width, label.get_rect().height
 
-			self.height_text += lbl_h
+			self.height_text = len(self.menu_items)*lbl_h
 			pos_x = (SCREEN_WIDTH / 2) - (lbl_w / 2)
 			pos_y = (SCREEN_HEIGHT / 2) - (self.height_text / 2) + (
 				index * lbl_h)
@@ -64,7 +64,7 @@ class Menu(States):
 	def draw(self, screen):
 		screen.fill(self.bg_color)
 		for item, label, (w, h), (x, y) in self.labels:
-			self.screen.blit(label, (x,y))
+			self.screen.blit(label, (x, y))
 
 
 class Loading(States):
@@ -189,6 +189,6 @@ state_dict = {
 	'menu': Menu(),
 	'game': Game()
 }
-app.setup_states(state_dict, 'game')
+app.setup_states(state_dict, 'menu')
 
 app.main_game_loop()

@@ -1,5 +1,5 @@
 import pygame
-import colors
+from graphics.colors import *
 
 pygame.init()
 SCREEN_WIDTH = 640
@@ -14,4 +14,4 @@ CLOCK = pygame.time.Clock()
 
 
 MENU_FONT = pygame.font.SysFont("Droid Sans Mono", 25)
-MENU_FONT_COLOR = colors.RED
+MENU_FONT_COLOR = RED

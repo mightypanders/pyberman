@@ -1,6 +1,6 @@
 import constants
 
-class labelitem():
+class MenuItem():
 	def __init__(self,text,pos):
 		self.text = text
 		self.label_item = constants.MENU_FONT.render(self.text, True,
