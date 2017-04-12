@@ -6,6 +6,7 @@ from graphics.colors import *
 pygame.init()
 
 
+
 class States(object):
 	def __init__(self):
 		self.done = False
@@ -103,6 +104,7 @@ class Game(States):
 
 	def startup(self):
 		self.__init__()
+
 
 	def get_event(self, event):
 		if event.type == pygame.QUIT:

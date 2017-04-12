@@ -1,9 +1,9 @@
 import pygame
-import os
 
 pygame.mixer.pre_init(22050, -16, 2, 512)
 pygame.mixer.init()
 pygame.init()
+
 
 class IngameSounds:
 	def __init__(self):
@@ -12,6 +12,7 @@ class IngameSounds:
 		self.walk_bump = pygame.mixer.Sound("assets/walk_bump.ogg")
 		self.player_die = pygame.mixer.Sound("assets/player_die.ogg")
 		self.item_pick = pygame.mixer.Sound("assets/item_pickup.ogg")
+
 	# self.bad_item_pick = pygame.mixer.Sound("")
 	# self.bomb_throw = pygame.mixer.Sound("")
 	# self.bomb_pick_up = pygame.mixer.Sound("")

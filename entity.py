@@ -24,7 +24,7 @@ class Player(pygame.sprite.Sprite):
 
 		self.bomb_color = self.color
 		self.bombs = pygame.sprite.Group()
-		self.bomb_max = 5
+		self.bomb_max = 1
 		self.bombs_placed = len(self.bombs)
 
 	def changespeed(self, x, y):
@@ -57,7 +57,6 @@ class Player(pygame.sprite.Sprite):
 			newbomb = Bomb(self.bomb_color, self)
 			self.bombs_placed += 1
 			self.bombs.add(newbomb)
-			print(self.bombs)
 			return self.bombs
 		else:
 			print("keine bombe")
@@ -86,7 +85,6 @@ class Bomb(pygame.sprite.Sprite):
 	def explode(self):
 		sounds.bomb_explode.play()
 		self.kill()
-		print ("boom")
 		print(self.player.bombs_placed)
 
 
